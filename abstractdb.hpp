@@ -24,7 +24,7 @@ namespace nwen
         char director[50];
     };
 
-    class AbstractDBTable {
+    class AbstractDbTable {
         virtual int rows() const = 0;
         virtual movie * get(int) const = 0;
         virtual void add(const movie&) = 0;

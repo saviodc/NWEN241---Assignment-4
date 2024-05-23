@@ -6,4 +6,9 @@
  * You need to modify this file to declare VectorDbTable class 
  * as specified in the hand-out (Task 2)
  */ 
+#include "abstractdb.hpp"
+namespace nwen{
+    class VectorDbTable : public AbstractDbTable{
 
+    };
+}
