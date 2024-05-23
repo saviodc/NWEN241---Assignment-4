@@ -31,7 +31,7 @@ namespace nwen
         virtual bool update(unsigned long, movie&) = 0;
         bool loadCSV(std::string);
         bool saveCSV(std::string);
-    }
+    };
 }
 
 #endif /* __ABSTRACT_DB_HPP__ */
