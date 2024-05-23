@@ -19,7 +19,7 @@ namespace nwen{
             movie * get(int) const;
             void add(const movie&);
             bool update(unsigned long, movie&);
-            //constructr to define certain capacity
+            //default constructer 
             VectorDbTable():rows{0} {}
     };
 }
