@@ -17,7 +17,7 @@ namespace nwen{
         public:
             int rows() const;
             movie * get(int) const;
-            void add(const movie&);
+            bool add(const movie&);
             bool update(unsigned long, movie&);
             //default constructer 
             VectorDbTable():rows{0} {}

@@ -28,7 +28,7 @@ namespace nwen
         public:
             virtual int rows() const = 0;
             virtual movie * get(int) const = 0;
-            virtual void add(const movie&) = 0;
+            virtual bool add(const movie&) = 0;
             virtual bool update(unsigned long, movie&) = 0;
             bool loadCSV(std::string);
             bool saveCSV(std::string);
