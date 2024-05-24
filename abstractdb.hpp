@@ -30,6 +30,7 @@ namespace nwen
             virtual movie * get(int) const = 0;
             virtual bool add(const movie&) = 0;
             virtual bool update(unsigned long, movie&) = 0;
+            virtual bool remove(unsigned long) =0;
             bool loadCSV(std::string);
             bool saveCSV(std::string);
     };

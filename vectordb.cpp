@@ -12,6 +12,7 @@
  */ 
 
 #include "vectordb.hpp"
+#include <algorithm>
 
 int nwen::vectorDbTable::rows() const{
     return this->rows;
@@ -25,12 +26,24 @@ nwen::movie *  get(int row) const{
 }
 
 bool add(const movie&){
-     if (std::find_if(this->table.begin(), this->table.end(), [movie](m)->m.id = movie.id)) return false;
+     if (std::find_if(this->table.begin(), this->table.end(), [movie](m)->{m.id = movie.id})) return false;
      this->rows++;
      this->table.push_back(movie);
      return true;
 }
 
-bool update(unsigned long, movie&){
-    
+bool update(unsigned long id, movie& movie){
+    for(auto& m : this->table){
+        if(m.id == id){
+            m = movie;
+            return true;
+        }
+    }
+    return false;
+}
+
+bool remove(unsigned long id){
+   auto check = std::remove_if(this->table.begin(), this->table.end(),[id](r)->{r.id == id});
+   if(check = this->table.end())return false;
+   return true;
 }
