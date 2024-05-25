@@ -12,15 +12,18 @@
 namespace nwen{
     class VectorDbTable : public AbstractDbTable{
         private:
-        int rows;
+        int tableRows;
         std::vector<movie> table;
         public:
-            int rows() const;
-            movie * get(int) const;
-            bool add(const movie&);
-            bool update(unsigned long, movie&);
-            bool remove(unsigned long);
+            int rows() const ;
+            movie * get(int) ;
+            bool add(const movie&) ;
+            bool update(unsigned long, movie&) ;
+            bool remove(unsigned long) ;
             //default constructer 
-            VectorDbTable():rows{0} {}
+            VectorDbTable(): tableRows(0) {}
+            ~VectorDbTable() {
+                table.clear();
+            }
     };
 }

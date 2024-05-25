@@ -27,12 +27,12 @@ namespace nwen
     class AbstractDbTable {
         public:
             virtual int rows() const = 0;
-            virtual movie * get(int) const = 0;
+            virtual movie * get(int) = 0;
             virtual bool add(const movie&) = 0;
             virtual bool update(unsigned long, movie&) = 0;
             virtual bool remove(unsigned long) =0;
-            bool loadCSV(std::string);
-            bool saveCSV(std::string);
+            virtual bool loadCSV(std::string);
+            virtual bool saveCSV(std::string);
     };
 }
 

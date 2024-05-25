@@ -13,37 +13,56 @@
 
 #include "vectordb.hpp"
 #include <algorithm>
+#include <vector>
+#include <functional>
 
-int nwen::vectorDbTable::rows() const{
-    return this->rows;
+int nwen::VectorDbTable::rows() const{
+    return this->tableRows;
 }
 
-nwen::movie *  get(int row) const{
-    if(row > this.rows){
+ nwen::movie *  nwen::VectorDbTable::get(int row) {
+    if(row >= this->tableRows){
         return nullptr;
     }
-    return & this->table.at(row);
+    return &this->table.at(row);
 }
 
-bool add(const movie&){
-     if (std::find_if(this->table.begin(), this->table.end(), [movie](m)->{m.id = movie.id})) return false;
-     this->rows++;
-     this->table.push_back(movie);
-     return true;
+bool nwen::VectorDbTable::add(const nwen::movie& mv){
+   // auto checkFound = std::find_if(this->table.begin(), this->table.end(), [mv](const movie& m) { return m.id == mv.id; });
+    for(auto& m : this->table){
+        if(m.id == mv.id){
+            return false;
+        }
+    }
+      //if ( checkFound != this->table.end()) return false;
+      this->tableRows++;
+      this->table.push_back(mv);
+      return true;
 }
 
-bool update(unsigned long id, movie& movie){
+
+bool nwen::VectorDbTable::remove(unsigned long id){
+    //auto check = std::remove_if(this->table.begin(), this->table.end(), [id](const movie& r) { return r.id == id; });
+    for(auto it = this->table.begin(); it != this->table.end(); it++){
+        if(it->id == id){
+            this->table.erase(it);
+            this->tableRows--;
+            return true;
+        }
+    }
+    //f(check == this->table.end()) return false;
+    
+    return false;
+}
+bool nwen::VectorDbTable::update(unsigned long id, movie& mv) {
     for(auto& m : this->table){
         if(m.id == id){
-            m = movie;
+            m = mv;
             return true;
         }
     }
     return false;
 }
 
-bool remove(unsigned long id){
-   auto check = std::remove_if(this->table.begin(), this->table.end(),[id](r)->{r.id == id});
-   if(check = this->table.end())return false;
-   return true;
-}
+
+
