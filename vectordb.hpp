@@ -10,20 +10,23 @@
 #include <algorithm>
 #include <vector>
 namespace nwen{
+    /**
+     * VectorDbTable class - represents a database table using a vector
+     * @inherits AbstractDbTable
+    */
     class VectorDbTable : public AbstractDbTable{
         private:
         int tableRows;
         std::vector<movie> table;
         public:
-            int rows() const ;
-            movie * get(int) ;
-            bool add(const movie&) ;
-            bool update(unsigned long, movie&) ;
-            bool remove(unsigned long) ;
+            int rows() const;
+            movie * get(int) const;
+            bool add(const movie&);
+            bool update(unsigned long, movie&);
+            bool remove(unsigned long);
             //default constructer 
             VectorDbTable(): tableRows(0) {}
-            ~VectorDbTable() {
-                table.clear();
-            }
+            //default Destructor
+            ~VectorDbTable()=default;
     };
 }

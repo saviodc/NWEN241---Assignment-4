@@ -49,13 +49,13 @@ int main(void)
     cout << "Actual return value  : " << r << endl;   
     
     cout << "Invoking loadCSV(\"t5.csv\")..." << endl;
-    r = db->loadCSV("t5.csv");
+    r = db->loadCSV("t4.csv");
     cout << "Expected return value: 1" << endl;
     cout << "Actual return value  : " << r << endl;       
-    cout << "Expected : rows = 3" << endl;
+    cout << "Expected : rows = 6" << endl;
     cout << "Actual   : rows = " << db->rows() << endl;  
     
-    for(int i=0; i<3; i++) {
+    for(int i=0; i<6; i++) {
         cout << "Invoking get(" << i << ")..." << endl;
         const movie *m = db->get(i);
         const movie *e = t5movies + i;
